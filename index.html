@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Personalized Coffee – Revo</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #415167;
+      --accent: #C7A17A;
+      --dark: #151D28;
+      --light: #EDF0F5;
+      --nav: #2f3e52;
+      --gray-bg: #EEF0F7;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Nunito", sans-serif;
+      background: #f2f4f8;
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+
+    .display-large {
+      font-family: "Montserrat", sans-serif;
+      font-weight: 900;
+      font-size: 54px;
+      line-height: 70px;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      font-family: "Montserrat", sans-serif;
+      font-weight: 900;
+      font-size: 30px;
+      line-height: 34px;
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .small-title {
+      font-family: "Nunito", sans-serif;
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 24px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      text-align: center;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    .card-title {
+      font-family: "Nunito", sans-serif;
+      font-size: 24px;
+      line-height: 28px;
+      font-weight: 700;
+    }
+
+    .price,
+    .label {
+      font-family: "Nunito", sans-serif;
+      font-size: 20px;
+      line-height: 24px;
+      font-weight: 600;
+    }
+
+    .desc {
+      font-family: "Nunito", sans-serif;
+      font-size: 16px;
+      line-height: 20px;
+      font-weight: 400;
+      color: #555;
+    }
+
+    .primary,
+    .ghost,
+    .link-btn {
+      font-family: "Nunito", sans-serif;
+      font-size: 16px;
+      line-height: 20px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    #hero {
+      height: 100vh;
+      display: grid;
+      grid-template-columns: 20% 60% 20%;
+      overflow: hidden;
+    }
+
+    .hero-left {
+      background: #fff;
+      padding-top: 35px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .hero-left img {
+      width: 120px;
+    }
+
+    .hero-image {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-play {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      border: none;
+      background: #fff;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    .hero-text {
+      position: absolute;
+      bottom: 70px;
+      left: 40px;
+      color: #fff;
+    }
+
+    .hero-text span {
+      background: var(--accent);
+      padding: 0 14px;
+    }
+
+    .hero-sidebar {
+      background: var(--nav);
+      color: #fff;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      padding: 35px;
+    }
+
+    .cart {
+      position: absolute;
+      left: 30px;
+      top: 30px;
+    }
+
+    .cart img {
+      width: 30px;
+    }
+
+    .cart-count {
+      position: absolute;
+      right: -10px;
+      top: -10px;
+      background: var(--accent);
+      color: #fff;
+      padding: 2px 6px;
+      border-radius: 50%;
+      font-size: 12px;
+    }
+
+    .sidebar-menu {
+      margin: auto 0;
+    }
+
+    .sidebar-menu ul {
+      list-style: none;
+    }
+
+    .sidebar-menu li {
+      margin: 22px 0;
+      font-size: 18px;
+      letter-spacing: 0.15em;
+      cursor: pointer;
+    }
+
+    #coffee-build {
+      background: #fff;
+      padding: 90px 0;
+    }
+
+    .features {
+      display: flex;
+      max-width: 1100px;
+      margin: 0 auto;
+      justify-content: space-between;
+    }
+
+    .feature {
+      flex: 1;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .feature img {
+      height: 55px;
+      margin-bottom: 20px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+    }
+
+    .primary {
+      padding: 8px 20px;
+      background: var(--accent);
+      border-radius: 20px;
+      color: #fff;
+      border: none;
+      text-transform: uppercase;
+    }
+
+    .ghost {
+      padding: 8px 20px;
+      border-radius: 20px;
+      border: 1px solid var(--accent);
+      background: transparent;
+      color: var(--accent);
+      text-transform: uppercase;
+    }
+
+    .link-btn {
+      background: none;
+      border: none;
+      color: #151d28;
+      font-weight: 700;
+      padding: 8px 0;
+    }
+
+    .products-section {
+      background: var(--gray-bg);
+      padding: 120px 0;
+      position: relative;
+    }
+
+    .products-dark-side {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 22%;
+      height: 100%;
+      background: var(--nav);
+    }
+
+    .products-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+      padding-left: 40px;
+    }
+
+    .products-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .products-row {
+      display: flex;
+      overflow: hidden;
+      gap: 24px;
+    }
+
+    .product-card-horizontal {
+      display: flex;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+      overflow: hidden;
+      padding: 20px;
+      align-items: center;
+      gap: 20px;
+      flex: 0 0 48%;
+    }
+
+    .product-img-area {
+      background: var(--gray-bg);
+      padding: 25px;
+      border-radius: 16px;
+    }
+
+    .product-img-area img {
+      width: 150px;
+    }
+
+    .product-info h3 {
+      margin-bottom: 8px;
+    }
+
+    .product-info .price {
+      margin-bottom: 8px;
+    }
+
+    .product-info p.desc {
+      margin-bottom: 20px;
+    }
+
+    #giftset {
+      background: #f2f4f8;
+      padding: 120px 0;
+    }
+
+    .giftset-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .giftset-wrapper {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: 45% 55%;
+      align-items: center;
+      position: relative;
+    }
+
+    .giftset-image-wrap {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      justify-content: center;
+    }
+
+    .giftset-image-wrap img {
+      width: 100%;
+      max-width: 480px;
+      position: relative;
+      top: 40px;
+      box-shadow: 0 20px 45px rgba(0,0,0,.15);
+      border-radius: 12px;
+    }
+
+    .giftset-card {
+      background: #fff;
+      border-radius: 18px;
+      padding: 45px 50px;
+      position: relative;
+      box-shadow: 0 20px 45px rgba(0,0,0,.12);
+      display: grid;
+      grid-template-columns: 70% 30%;
+      gap: 20px;
+    }
+
+    .giftset-content h3 {
+      margin-bottom: 12px;
+    }
+
+    .giftset-content .price {
+      margin-bottom: 10px;
+    }
+
+    .giftset-content .desc {
+      margin-bottom: 30px;
+    }
+
+    .giftset-meta {
+      display: flex;
+      gap: 70px;
+      margin-bottom: 35px;
+    }
+
+    .giftset-meta-item {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .giftset-meta-item img {
+      width: 28px;
+    }
+
+    .giftset-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      align-items: center;
+    }
+
+    .step {
+      width: 46px;
+      height: 46px;
+      border-radius: 6px;
+      background: #eef0f7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 20px;
+      color: #74829c;
+    }
+
+    .step.active {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .combo-section {
+      background: var(--gray-bg);
+      padding: 120px 0;
+      position: relative;
+    }
+
+    .combo-dark-side {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 22%;
+      height: 100%;
+      background: var(--nav);
+    }
+
+    .combo-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .combo-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 30px;
+    }
+
+    .combo-card {
+      background: #fff;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    }
+
+    .combo-img-area {
+      background: var(--gray-bg);
+      padding: 45px 20px 30px;
+      text-align: center;
+    }
+
+    .combo-img-area img {
+      width: 65%;
+    }
+
+    .combo-info {
+      padding: 25px 22px 30px;
+    }
+
+    .combo-info .price-new {
+      margin-right: 8px;
+    }
+
+    .combo-info h3 {
+      margin: 10px 0;
+    }
+
+    .combo-info p.desc {
+      margin-bottom: 22px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      font-size: 13px;
+      color: #999;
+      background: #fff;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <section id="hero">
+    <div class="hero-left">
+      <img src="assets/img/LOGO.png" alt="Revo Coffee logo">
+    </div>
+
+    <div class="hero-image">
+      <img src="assets/img/Баннер.png" alt="Coffee banner">
+      <button class="hero-play" type="button">▶</button>
+
+      <div class="hero-text">
+        <h1 class="display-large">
+          YOUR <br>
+          <span>PERSONALIZED</span><br>
+          COFFEE
+        </h1>
+      </div>
+    </div>
+
+    <aside class="hero-sidebar">
+      <div class="cart">
+        <img src="assets/icons/shopping-cart-3.png" alt="Shopping cart icon">
+        <span class="cart-count">2</span>
+      </div>
+
+      <nav class="sidebar-menu">
+        <ul>
+          <li>TRANG CHỦ</li>
+          <li>COFFEE</li>
+          <li>PHIN MẠ MÀU</li>
+          <li>COMBO PHIN PHÊ</li>
+          <li>GIFTSET</li>
+          <li>LIÊN HỆ</li>
+        </ul>
+      </nav>
+    </aside>
+  </section>
+</header>
+
+<main>
+
+<section id="coffee-build">
+  <p class="small-title">Your Personalized Coffee</p>
+  <h2 class="section-title">COFFEE BUILD YOUR BASE</h2>
+
+  <div class="features">
+    <article class="feature">
+      <img src="assets/icons/IC (1).png" alt="Coffee origin icon">
+      <h3 class="card-title">Nguồn gốc</h3>
+      <p class="desc">Những hạt cà phê Arabica, Robusta đạt chất lượng theo tiêu chuẩn quốc tế.</p>
+    </article>
+
+    <article class="feature">
+      <img src="assets/icons/IC (2).png" alt="Coffee quality icon">
+      <h3 class="card-title">Chất lượng</h3>
+      <p class="desc">Từng một hạt cà phê là cả một quá trình tập trung cao độ của nghệ nhân cà phê.</p>
+    </article>
+
+    <article class="feature">
+      <img src="assets/icons/IC_coffee.png" alt="Coffee beans icon">
+      <h3 class="card-title">Các loại hạt</h3>
+      <p class="desc">70% chất lượng tách cà phê đến từ nguồn gốc và chất lượng green bean.</p>
+    </article>
+
+    <article class="feature">
+      <img src="assets/icons/IC (3).png" alt="Brewing process icon">
+      <h3 class="card-title">Pha chế</h3>
+      <p class="desc">Những hạt cà phê được lột xác qua quá trình rang xay kỹ lưỡng và nghiêm ngặt.</p>
+    </article>
+  </div>
+</section>
+
+
+<section class="products-section">
+  <div class="products-dark-side"></div>
+
+  <div class="products-container">
+    <p class="small-title">Choose Your Favorite</p>
+    <h2 class="section-title">CHUẨN GU ĐÚNG VỊ</h2>
+
+    <div class="products-rows">
+
+      <div class="products-row">
+        <article class="product-card-horizontal">
+          <div class="product-img-area">
+            <img src="assets/img/image (1).png" alt="Revo Morning coffee pack">
+          </div>
+          <div class="product-info">
+            <p class="price">99.000</p>
+            <h3 class="card-title">REVO Morning</h3>
+            <p class="desc">đắng, hậu ngọt, hương hoa</p>
+            <div class="actions">
+              <button class="primary" type="button">MUA NGAY</button>
+              <button class="ghost" type="button">CHI TIẾT</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card-horizontal">
+          <div class="product-img-area">
+            <img src="assets/img/IMAGE (2).png" alt="Revo Everyday coffee pack">
+          </div>
+          <div class="product-info">
+            <p class="price">85.000</p>
+            <h3 class="card-title">REVO Everyday</h3>
+            <p class="desc">cân bằng, hậu đắng, vị chocolate</p>
+            <div class="actions">
+              <button class="primary" type="button">MUA NGAY</button>
+              <button class="ghost" type="button">CHI TIẾТ</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card-horizontal">
+          <div class="product-img-area">
+            <img src="assets/img/IMAGE.png" alt="Revo Origin coffee pack">
+          </div>
+          <div class="product-info">
+            <p class="price">139.000</p>
+            <h3 class="card-title">REVO Origin</h3>
+            <p class="desc">hậu ngọt, ít đắng, vị chua dâu</p>
+            <div class="actions">
+              <button class="primary" type="button">MUA NGAY</button>
+              <button class="ghost" type="button">CHI TIẾТ</button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="products-row">
+        <article class="product-card-horizontal">
+          <div class="product-img-area">
+            <img src="assets/img/IMAGE (3).png" alt="Revo Đậm Đà coffee pack">
+          </div>
+          <div class="product-info">
+            <p class="price">75.000</p>
+            <h3 class="card-title">REVO Đậm Đà</h3>
+            <p class="desc">đậm đà, đắng, truyền thống</p>
+            <div class="actions">
+              <button class="primary" type="button">MUA NGAY</button>
+              <button class="ghost" type="button">CHI TIẾТ</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card-horizontal">
+          <div class="product-img-area">
+            <img src="assets/img/IMAGE (3).png" alt="Revo Honey coffee pack">
+          </div>
+          <div class="product-info">
+            <p class="price">195.000</p>
+            <h3 class="card-title">REVO Honey</h3>
+            <p class="desc">độ ngọt cao, hậu ngọt, chua họ táo</p>
+            <div class="actions">
+              <button class="primary" type="button">MUA NGAY</button>
+              <button class="ghost" type="button">CHI TIẾΤ</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card-horizontal">
+          <div class="product-img-area">
+            <img src="assets/img/IMAGE.png" alt="Revo Natural coffee pack">
+          </div>
+          <div class="product-info">
+            <p class="price">169.000</p>
+            <h3 class="card-title">REVO Natural</h3>
+            <p class="desc">hậu ngọt, hương hoa, vị chua dâu</p>
+            <div class="actions">
+              <button class="primary" type="button">MUA NGAY</button>
+              <button class="ghost" type="button">CHI TIẾТ</button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<section id="giftset">
+  <div class="giftset-container">
+    <p class="small-title">Best Gift For Best Friend</p>
+    <h2 class="section-title">GIFTSET</h2>
+
+    <div class="giftset-wrapper">
+      <div class="giftset-image-wrap">
+        <img src="assets/img/pr-0018-r.png" alt="Revo Vietnamese phin coffee giftset box">
+      </div>
+
+      <article class="giftset-card">
+        <div class="giftset-content">
+          <p class="price">285.000</p>
+          <h3 class="card-title">Giftset "Cà phê phin Việt Nam"</h3>
+          <p class="desc">
+            Món quà tuyệt vời dành cho người sành cà phê. Hạt cà phê được Revo cẩn trọng chọn lựa,
+            rang xay theo công nghệ và bí quyết học hỏi từ những nghệ nhân nổi tiếng, cùng với tình yêu,
+            sự đam mê của người làm cà phê… tạo ra những tách cà phê tinh khiết chỉ dành riêng cho bạn.
+          </p>
+
+          <div class="giftset-meta">
+            <div class="giftset-meta-item">
+              <img src="assets/icons/IC_coffee.png" alt="Coffee bean type icon">
+              <div>
+                <span class="label">Loại hạt</span>
+                <span class="value">Fine Robusta Blend</span>
+              </div>
+            </div>
+
+            <div class="giftset-meta-item">
+              <img src="assets/icons/IC_Mountain.png" alt="Mountain altitude icon">
+              <div>
+                <span class="label">Độ cao</span>
+                <span class="value">700–800m</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button class="primary" type="button">MUA NGAY</button>
+            <button class="link-btn" type="button">CHI TIẾТ</button>
+          </div>
+        </div>
+
+        <div class="giftset-steps">
+          <div class="step active">1</div>
+          <div class="step">2</div>
+          <div class="step">3</div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<section class="combo-section">
+  <div class="combo-dark-side"></div>
+
+  <div class="combo-container">
+    <p class="small-title">Your Personalized Coffee</p>
+    <h2 class="section-title">COMBO PHIN PHÊ</h2>
+
+    <div class="combo-grid">
+
+      <article class="combo-card">
+        <div class="combo-img-area">
+          <img src="assets/img/image (6).png" alt="Combo Revo Đậm Đà set">
+        </div>
+        <div class="combo-info">
+          <p class="price-new price">147.000</p>
+          <p class="price-old desc">155.000</p>
+          <h3 class="card-title">Combo Revo Đậm Đà</h3>
+          <p class="desc">Hàm lượng caffein trong Revo Đậm Đà đủ mạnh để làm bạn tỉnh táo...</p>
+          <div class="actions">
+            <button class="primary" type="button">MUA NGAY</button>
+            <button class="ghost" type="button">CHI TIẾТ</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="combo-card">
+        <div class="combo-img-area">
+          <img src="assets/img/image (7).png" alt="Combo Revo Everyday set">
+        </div>
+        <div class="combo-info">
+          <p class="price-new price">156.000</p>
+          <p class="price-old desc">165.000</p>
+          <h3 class="card-title">Combo Revo Everyday</h3>
+          <p class="desc">Revo Everyday được phối trộn giữa vị đắng của Robusta và hương thơm…</p>
+          <div class="actions">
+            <button class="primary" type="button">MUA NGAY</button>
+            <button class="ghost" type="button">CHI TIẾТ</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="combo-card">
+        <div class="combo-img-area">
+          <img src="assets/img/image (8).png" alt="Combo Revo Honey set">
+        </div>
+        <div class="combo-info">
+          <p class="price-new price">275.000</p>
+          <p class="price-old desc">260.000</p>
+          <h3 class="card-title">Combo Revo Honey</h3>
+          <p class="desc">Honey – trong tên gọi Revo Honey đến từ phương pháp chế biến hạt Arabica…</p>
+          <div class="actions">
+            <button class="primary" type="button">MUA NGAY</button>
+            <button class="ghost" type="button">CHI TIẾТ</button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  © Revo Coffee Việt Nam — 2018
+</footer>
+
+</body>
+</html>
